@@ -4,7 +4,7 @@ const CatBox = (props) => {
 			<img src={props.image} alt="cat" className="cat-pic" />
 			<div className="cat-box-caption">
 				<h2>{props.name}</h2>
-				<button>Add to cart</button>
+				<button onClick={props.handleAdd}>Add to cart</button>
 			</div>
 		</div>
 	);
