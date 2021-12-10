@@ -39,7 +39,7 @@ const App = () => {
 
 	const priceGetter = async () => {
 		const response = await fetch(
-			"https://fakerapi.it/api/v1/products?_quantity=20&price_min=2000&price_max=20000"
+			"https://fakerapi.it/api/v1/products?_quantity=20&_price_min=200.00&_price_max=2000.00"
 		);
 		const info = await response.json();
 		let priceArr = [];
