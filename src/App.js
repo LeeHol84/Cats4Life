@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
+import styled from "styled-components"
 import NavBar from "./components/Navbar";
 import CatBox from "./components/CatBox";
 import ReactModal from 'react-modal';
 import BasketList from "./components/BasketList"
 import Total from "./components/Total"
+
+const BasketWrapper = styled.section `
+	background-color: "orange;"
+	`
 
 const App = () => {
 	const [cat, setCat] = useState([]);
@@ -87,15 +92,17 @@ const App = () => {
 			<NavBar title="Welcome to Ye Olde Catte Shoppe" handleOpenModal={handleOpenModal} />
 			<div className="cat-wrapper">
 				{cat.map((cat, index) => {
-					return <CatBox key={index} image={cat.url} handleAdd={() => handleAdd(index)}/>;
+					return <CatBox key={index} image={cat.url} name={name[index]} price={price[index]} handleAdd={() => handleAdd(index)}/>;
 				})}
 			</div>
 			<ReactModal isOpen={showModal} >
-        		<h2>Basket</h2>
-       			<button onClick={handleCloseModal}>Close</button>
-        		<BasketList items={basketItems} handleRemove={handleRemove}/>
-        		<Total items={basketItems}/>
-        		<button onClick={handleChekout}>Checkout</button>
+				<BasketWrapper>
+					<h2>Basket</h2>
+					<button onClick={handleCloseModal}>Close</button>
+					<BasketList items={basketItems} handleRemove={handleRemove}/>
+					<Total items={basketItems}/>
+					<button onClick={handleChekout}>Checkout</button>
+				</BasketWrapper>
       		</ReactModal>
 		</div>
 	);
